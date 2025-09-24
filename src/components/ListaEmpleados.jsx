@@ -3,18 +3,16 @@ export default function ListaEmpleados({ empleados, loading }) {
   if (empleados.length === 0) return <p className="text-slate-500">No hay empleados.</p>;
 
   return (
-    <ul className="divide-y divide-slate-200">
+    <ul className="space-y-4">
       {empleados.map((emp) => (
-        <li key={emp.id} className="py-3">
-          <div className="flex flex-col md:flex-row md:justify-between">
-            <div>
-              <p className="font-medium">{emp.nombre}</p>
-              <p className="text-xs text-slate-500">
-                DNI: {emp.dni} • {emp.direccion}
-              </p>
-            </div>
-            <p className="text-sm text-slate-700">{emp.email}</p>
-          </div>
+        <li
+          key={emp.id}
+          className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
+        >
+          <p className="font-semibold">Nombre: {emp.nombre}</p>
+          <p className="text-sm text-slate-700">DNI: {emp.dni}</p>
+          <p className="text-sm text-slate-700">Dirección: {emp.direccion}</p>
+          <p className="text-sm text-slate-700">Email: {emp.email}</p>
         </li>
       ))}
     </ul>

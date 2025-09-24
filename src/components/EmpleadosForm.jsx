@@ -1,7 +1,12 @@
 import { useState } from "react";
 
 export default function EmpleadosForm({ onAdd }) {
-  const [form, setForm] = useState({ nombre: "", dni: "", direccion: "", email: "" });
+  const [form, setForm] = useState({
+    nombre: "",
+    dni: "",
+    direccion: "",
+    email: "",
+  });
   const [errors, setErrors] = useState({});
 
   function validacion(datos) {
@@ -19,7 +24,7 @@ export default function EmpleadosForm({ onAdd }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const v = validate(form);
+    const v = validacion(form); 
     setErrors(v);
     if (Object.keys(v).length === 0) {
       onAdd(form);
@@ -38,7 +43,9 @@ export default function EmpleadosForm({ onAdd }) {
             onChange={handleChange}
             className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-sky-500 focus:outline-none"
           />
-          {errors[field] && <p className="text-xs text-red-600">{errors[field]}</p>}
+          {errors[field] && (
+            <p className="text-xs text-red-600">{errors[field]}</p>
+          )}
         </div>
       ))}
       <button
@@ -50,5 +57,3 @@ export default function EmpleadosForm({ onAdd }) {
     </form>
   );
 }
-
-  
